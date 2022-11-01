@@ -49,3 +49,18 @@ selectedSector.addEventListener("change", (event) => {
     renderCompanies(companies);
   }
 });
+
+const toLoginButton = document.querySelectorAll(".to-login");
+const toRegisterButton = document.querySelectorAll(".to-register");
+
+toLoginButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    window.location.href = "./pages/login.html";
+  });
+});
+
+toRegisterButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    window.location.href = "./pages/register.html";
+  });
+});

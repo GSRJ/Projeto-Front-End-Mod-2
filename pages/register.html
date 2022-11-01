@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/globalStyles.css" />
+    <link rel="stylesheet" href="../styles/register.css" />
+    <title>Register Page</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="" alt="Logo da Kenzie Empresas" />
+      </div>
+      <div class="buttons">
+        <button class="to-home">Home</button>
+        <button class="to-login">Login</button>
+      </div>
+    </header>
+    <h1>Cadastre-se</h1>
+    <form action="register.php" method="POST">
+      <input type="text" name="username" placeholder="Seu Nome" />
+      <input type="email" name="email" placeholder="Seu e-mail" />
+      <input type="password" name="password" placeholder="Sua senha" />
+      <select name="professional-level" id="professional-level">
+        <option value="" disabled selected>Nível profissional</option>
+        <option value="estágio">estágio</option>
+        <option value="júnior">Júnior</option>
+        <option value="pleno">Pleno</option>
+        <option value="sênior">Sênior</option>
+      </select>
+      <button type="submit">Cadastre-se</button>
+    </form>
+    <button class="to-login">Retornar</button>
+    <script type="module" src="../scripts/register.js"></script>
+  </body>
+</html>
