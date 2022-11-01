@@ -8,18 +8,19 @@ const sectors = [
 
 function renderSectors() {
   const sectorsContainer = document.querySelector("select");
+  sectorsContainer.insertAdjacentHTML(
+    "beforeend",
+    `<option value="companies">teste</option>`
+  );
   sectors.forEach((sector) => {
-    const option = document.createElement("option");
-    option.value = sector;
-    option.textContent = sector;
-    sectorsContainer.appendChild(option);
+    sectorsContainer.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${sector}">${sector}</option>`
+    );
   });
 }
-renderSectors();
 
-const filteredCompanies = companies.filter((company) => {
-  return company.sectors.description === "TI";
-});
+renderSectors();
 
 function renderCompanies(array) {
   const companiesList = document.getElementById("companies-list");
@@ -39,12 +40,12 @@ renderCompanies(companies);
 const selectedSector = document.querySelector("select");
 selectedSector.addEventListener("change", (event) => {
   const selectedSector = event.target.value;
+  console.log(selectedSector);
   const filteredCompanies = companies.filter(
     (company) => company.sectors.description === selectedSector
   );
   renderCompanies(filteredCompanies);
-
-  if (selectedSector === "") {
+  if (selectedSector === "companies") {
     renderCompanies(companies);
   }
 });
