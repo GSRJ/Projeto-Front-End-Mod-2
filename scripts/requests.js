@@ -26,3 +26,14 @@ export async function loginUser(user) {
   });
   return await response.json();
 }
+
+export async function getUserData() {
+  const response = await fetch(`${baseUrl}users/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}
