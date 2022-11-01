@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/globalStyles.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
     <title>Login Page</title>
   </head>
   <body>
-    Login
+    <div class="container">
+      <div class="login">
+        <h1>Login</h1>
+        <form action="login.php" method="POST">
+          <input type="email" name="email" placeholder="Seu e-mail" />
+          <input type="password" name="password" placeholder="Sua senha" />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+    <script type="module" src="../scripts/login.js"></script>
   </body>
 </html>
