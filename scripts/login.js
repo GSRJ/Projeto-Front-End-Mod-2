@@ -9,10 +9,7 @@ form.addEventListener("submit", async (e) => {
     email: formData.get("email"),
     password: formData.get("password"),
   };
-  console.log(user);
   const response = await loginUser(user);
-  console.log(response);
-
   localStorage.setItem("token", response.token);
 });
 
