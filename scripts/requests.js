@@ -83,3 +83,50 @@ export async function userEdit(user) {
   });
   return await response.json();
 }
+
+//Admin page
+
+export async function getDepartments() {
+  const response = await fetch(`${baseUrl}departments`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}
+
+export async function getWorkers() {
+  const response = await fetch(`${baseUrl}users`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}
+
+export async function getWorkersWithoutDepartment() {
+  const response = await fetch(`${baseUrl}admin/out_of_work`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}
+
+export async function createDepartment(data) {
+  const response = await fetch(`${baseUrl}departments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
+}

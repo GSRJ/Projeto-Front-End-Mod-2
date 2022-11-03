@@ -10,7 +10,7 @@ function renderSectors() {
   const sectorsContainer = document.querySelector("select");
   sectorsContainer.insertAdjacentHTML(
     "beforeend",
-    `<option value="companies">teste</option>`
+    `<option value="companies">Todas</option>`
   );
   sectors.forEach((sector) => {
     sectorsContainer.insertAdjacentHTML(
@@ -29,7 +29,7 @@ function renderCompanies(array) {
       (company) => `<li>
     <h1>${company.name}</h1>
     <p>${company.opening_hours}</p>
-    <buitton>${company.sectors.description}</buitton>
+    <button>${company.sectors.description}</button>
     </li>`
     )
     .join("");
