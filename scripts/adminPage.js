@@ -3,6 +3,7 @@ import { getCompanies } from "./requests.js";
 import { getWorkers } from "./requests.js";
 import { getWorkersWithoutDepartment } from "./requests.js";
 import { createDepartment } from "./requests.js";
+import { editDepartment } from "./requests.js";
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -75,13 +76,29 @@ function renderDepartments(array) {
         <p>${department.companies.name}</p>
       </div>
         <div class="department-buttons">
-        <button class="view-department">Ver</button>
-        <button class="edit-department">Editar</button>
-        <button class="delete-department">Deletar</button>
+        <button id="${department.uuid}class="view-department">Ver</button>
+        <button id="${department.uuid}"class="edit-department">Editar</button>
+        <button id=""${department.uuid}"class="delete-department">Deletar</button>
         </div>
         </li>`
     )
     .join("");
+
+  const editDepartmentButtons = document.querySelectorAll(".edit-department");
+  editDepartmentButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const editModal = document.querySelector(".edit-modal");
+      editModal.classList.add("active");
+      const departmentUuid = event.target.id;
+      const departmentDescription =
+        button.parentElement.parentElement.children[0].children[1].innerText;
+
+      console.log("departmentDescription", departmentDescription);
+
+      console.log("departmentUuid", departmentUuid);
+      modalEditContent(departmentUuid, departmentDescription);
+    });
+  });
 }
 renderDepartments(departments);
 
@@ -113,7 +130,7 @@ function renderWorkers(array, selectedCompany) {
 }
 renderWorkers(workersIndepartments);
 
-// Modals
+// Modal create department
 
 const formCreateDepartment = document.querySelector("#form-create-department");
 console.log("formCreateDepartment", formCreateDepartment);
@@ -154,3 +171,34 @@ formCreateDepartment.addEventListener("submit", async (event) => {
   const newDepartment = await createDepartment(departmentData);
   console.log("newDepartment", newDepartment);
 });
+
+// Modal edit department
+
+const formEditDepartment = document.querySelector("#form-edit-department");
+
+function modalEditContent(id, description) {
+  const departmentDescription = document.querySelector(
+    "#edit-department-description"
+  );
+  console.log("departmentDescription", departmentDescription);
+  departmentDescription.value = description;
+
+  const editDepartmentButton = document.getElementById("save-edit-department");
+  console.log("editDepartmentButton", editDepartmentButton);
+
+  editDepartmentButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const departmentDescription = document.querySelector(
+      "#edit-department-description"
+    ).value;
+
+    const departmentData = {
+      description: departmentDescription,
+    };
+
+    editDepartment(departmentData, id);
+    const editModal = document.querySelector(".edit-modal");
+    editModal.classList.remove("active");
+    window.location.reload();
+  });
+}

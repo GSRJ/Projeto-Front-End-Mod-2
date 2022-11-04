@@ -130,3 +130,18 @@ export async function createDepartment(data) {
   });
   return await response.json();
 }
+
+export async function editDepartment(postData, id) {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${baseUrl}departments/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
