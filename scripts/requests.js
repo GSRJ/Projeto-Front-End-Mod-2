@@ -145,3 +145,14 @@ export async function editDepartment(postData, id) {
   const data = await response.json();
   console.log(data);
 }
+
+export async function deleteDepartment(id) {
+  const response = await fetch(`${baseUrl}departments/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}

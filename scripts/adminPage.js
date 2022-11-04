@@ -4,6 +4,7 @@ import { getWorkers } from "./requests.js";
 import { getWorkersWithoutDepartment } from "./requests.js";
 import { createDepartment } from "./requests.js";
 import { editDepartment } from "./requests.js";
+import { deleteDepartment } from "./requests.js";
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -76,15 +77,16 @@ function renderDepartments(array) {
         <p>${department.companies.name}</p>
       </div>
         <div class="department-buttons">
-        <button id="${department.uuid}class="view-department">Ver</button>
+        <button id="${department.uuid}" class="view-department">Ver</button>
         <button id="${department.uuid}"class="edit-department">Editar</button>
-        <button id=""${department.uuid}"class="delete-department">Deletar</button>
+        <button id="${department.uuid}" class="delete-department">Deletar</button>
         </div>
         </li>`
     )
     .join("");
 
   const editDepartmentButtons = document.querySelectorAll(".edit-department");
+  console.log("editDepartmentButtons", editDepartmentButtons);
   editDepartmentButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const editModal = document.querySelector(".edit-modal");
@@ -97,6 +99,25 @@ function renderDepartments(array) {
 
       console.log("departmentUuid", departmentUuid);
       modalEditContent(departmentUuid, departmentDescription);
+    });
+  });
+
+  const deleteDepartmentButtons =
+    document.querySelectorAll(".delete-department");
+
+  console.log("deleteDepartmentButtons", deleteDepartmentButtons);
+  deleteDepartmentButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const deleteDepartmentModal = document.querySelector(
+        ".delete-department-modal"
+      );
+      deleteDepartmentModal.classList.add("active");
+      const departmentUuid = event.target.id;
+      console.log("departmentUuid", departmentUuid);
+      const departmentName =
+        button.parentElement.parentElement.children[0].children[0].innerText;
+      console.log("departmentName", departmentName);
+      modalDeleteContent(departmentUuid, departmentName);
     });
   });
 }
@@ -199,6 +220,27 @@ function modalEditContent(id, description) {
     editDepartment(departmentData, id);
     const editModal = document.querySelector(".edit-modal");
     editModal.classList.remove("active");
+    window.location.reload();
+  });
+}
+
+// Modal delete department
+
+function modalDeleteContent(id, name) {
+  const deleteDepartmentButton = document.getElementById(
+    "confirm-delete-department"
+  );
+  const departmentName = document.querySelector(".department-name-delete");
+  console.log("DepartmentName", departmentName);
+  departmentName.textContent = name;
+  console.log("deleteDepartmentButton", deleteDepartmentButton);
+  deleteDepartmentButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    deleteDepartment(id);
+    const deleteDepartmentModal = document.querySelector(
+      ".delete-department-modal"
+    );
+    deleteDepartmentModal.classList.remove("active");
     window.location.reload();
   });
 }
