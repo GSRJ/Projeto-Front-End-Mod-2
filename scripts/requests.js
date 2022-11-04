@@ -156,3 +156,29 @@ export async function deleteDepartment(id) {
   });
   return await response.json();
 }
+
+export async function addWorkerToDepartment(workeruuid, departmentuuid) {
+  const data = {
+    user_uuid: workeruuid,
+    department_uuid: departmentuuid,
+  };
+  const response = await fetch(`${baseUrl}departments/hire/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
+}
+
+export async function deleteWorker(workeruuid) {
+  const response = await fetch(`${baseUrl}departments/dismiss/${workeruuid}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}

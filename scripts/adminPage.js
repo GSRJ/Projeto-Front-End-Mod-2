@@ -5,6 +5,8 @@ import { getWorkersWithoutDepartment } from "./requests.js";
 import { createDepartment } from "./requests.js";
 import { editDepartment } from "./requests.js";
 import { deleteDepartment } from "./requests.js";
+import { addWorkerToDepartment } from "./requests.js";
+import { deleteWorker } from "./requests.js";
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -16,6 +18,9 @@ const departments = await getDepartments();
 console.log("departments", departments);
 const workers = await getWorkers();
 console.log("workers", workers);
+const workersWithoutDepartment = await getWorkersWithoutDepartment();
+console.log("workersWithoutDepartment", workersWithoutDepartment);
+
 const workersIndepartments = workers.filter((worker) => {
   return worker.department_uuid !== null;
 });
@@ -118,6 +123,39 @@ function renderDepartments(array) {
         button.parentElement.parentElement.children[0].children[0].innerText;
       console.log("departmentName", departmentName);
       modalDeleteContent(departmentUuid, departmentName);
+    });
+  });
+
+  const viewDepartmentButtons = document.querySelectorAll(".view-department");
+  console.log("viewDepartmentButtons", viewDepartmentButtons);
+
+  viewDepartmentButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const viewDepartmentModal = document.querySelector(".view-modal");
+      viewDepartmentModal.classList.add("active");
+      const departmentUuid = event.target.id;
+      console.log("departmentUuid", departmentUuid);
+      const departmentName =
+        button.parentElement.parentElement.children[0].children[0].innerText;
+      console.log("departmentName", departmentName);
+      const departmentDescription =
+        button.parentElement.parentElement.children[0].children[1].innerText;
+      console.log("departmentDescription", departmentDescription);
+      const companyName =
+        button.parentElement.parentElement.children[0].children[2].innerText;
+      console.log("companyName", companyName);
+
+      const workersInDepartment = workers.filter((worker) => {
+        return worker.department_uuid === departmentUuid;
+      });
+      console.log("workersInDepartment", workersInDepartment);
+      modalViewContent(
+        departmentName,
+        departmentDescription,
+        companyName,
+        workersInDepartment,
+        departmentUuid
+      );
     });
   });
 }
@@ -242,5 +280,78 @@ function modalDeleteContent(id, name) {
     );
     deleteDepartmentModal.classList.remove("active");
     window.location.reload();
+  });
+}
+
+// Modal view department
+
+function modalViewContent(name, description, company, workers, id) {
+  const departmentName = document.querySelector(".view-department-name");
+  departmentName.textContent = name;
+  const departmentDescription = document.querySelector(
+    ".view-department-description"
+  );
+  departmentDescription.textContent = description;
+  const companyName = document.querySelector(".view-department-company");
+  const workersWithoutDepartmentContainer = document.querySelector(
+    "#workes-without-department-container"
+  );
+  console.log(
+    "workersWithoutDepartmentContainer",
+    workersWithoutDepartmentContainer
+  );
+
+  workersWithoutDepartmentContainer.innerHTML = workersWithoutDepartment
+    .map(
+      (worker) => `<option value="${worker.uuid}">${worker.username}</option>`
+    )
+    .join("");
+
+  const addWorkerToDepartmentButton = document.querySelector(
+    "#add-worker-to-department"
+  );
+  console.log("addWorkerToDepartmentButton", addWorkerToDepartmentButton);
+
+  addWorkerToDepartmentButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const workerUuid = document.querySelector(
+      "#workes-without-department-container"
+    ).value;
+    console.log("workerUuid", workerUuid);
+    const department_id = id;
+
+    addWorkerToDepartment(workerUuid, department_id);
+    alert("Funcionário adicionado com sucesso!");
+    window.location.reload();
+  });
+
+  companyName.textContent = company;
+  const workersList = document.querySelector(".view-department-workers");
+  console.log("workersList", workersList);
+  workers.forEach((worker) => {
+    workersList.insertAdjacentHTML(
+      "beforeend",
+      `<li>
+            <div class="worker-data">
+                <h1>${worker.username}</h1>
+                <p>${worker.professional_level}</p> 
+                <p>${company}</p>
+            </div>
+            <div class="worker-buttons">
+                <button class="delete-worker" id="${worker.uuid}">Desligar</button>
+            </div>
+            </li>`
+    );
+
+    const deleteWorkerButton = document.getElementById(worker.uuid);
+    console.log("deleteWorkerButton", deleteWorkerButton);
+    deleteWorkerButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+      console.log("worker.uuid", worker.uuid);
+      const workerUuid = worker.uuid;
+      deleteWorker(workerUuid);
+      alert("Funcionário desligado com sucesso!");
+      window.location.reload();
+    });
   });
 }
