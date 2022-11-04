@@ -88,3 +88,15 @@ editUserForm.addEventListener("submit", async (event) => {
     window.location.reload();
   }
 });
+
+const menuButton = document.querySelector(".menu");
+
+const headerbutton = document.querySelector(".buttons");
+
+menuButton.addEventListener("mouseenter", () => {
+  headerbutton.classList.add("active");
+});
+
+headerbutton.addEventListener("mouseleave", () => {
+  headerbutton.classList.remove("active");
+});

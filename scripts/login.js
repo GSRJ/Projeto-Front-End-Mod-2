@@ -27,3 +27,15 @@ toHomeButton.forEach((button) => {
     window.location.href = "../index.html";
   });
 });
+
+const menuButton = document.querySelector(".menu");
+
+const headerbutton = document.querySelector(".buttons");
+
+menuButton.addEventListener("mouseenter", () => {
+  headerbutton.classList.add("active");
+});
+
+headerbutton.addEventListener("mouseleave", () => {
+  headerbutton.classList.remove("active");
+});

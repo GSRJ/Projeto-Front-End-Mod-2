@@ -11,17 +11,24 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="" alt="Logo da Kenzie Empresas" />
+        <img src="./assets/img/logo.svg" alt="Logo da Kenzie Empresas" />
+        <img src="./assets/img/headerMenu.svg" alt="menu" class="menu" />
       </div>
       <div class="buttons">
-        <button class="to-login">Login</button>
-        <button class="to-register">Cadastro</button>
+        <button class="to-login white-btn">Login</button>
+        <button class="to-register blue-btn">Cadastro</button>
       </div>
     </header>
     <main>
-      <label for="sectors-list">Selecionar Setor:</label>
+      <img
+        class="home-image"
+        src="./assets/img/homeImage.svg"
+        alt="imagem principal"
+      />
+      <div>
       <select id="sectors-list" name="sectors-list"></select>
       <ul id="companies-list"></ul>
+      </main>
     </main>
     <script type="module" src="./scripts/index.js"></script>
   </body>

@@ -10,7 +10,7 @@ function renderSectors() {
   const sectorsContainer = document.querySelector("select");
   sectorsContainer.insertAdjacentHTML(
     "beforeend",
-    `<option value="companies">Todas</option>`
+    `<option value="companies">Selecionar Setor</option>`
   );
   sectors.forEach((sector) => {
     sectorsContainer.insertAdjacentHTML(
@@ -28,8 +28,10 @@ function renderCompanies(array) {
     .map(
       (company) => `<li>
     <h1>${company.name}</h1>
+    <div>
     <p>${company.opening_hours}</p>
     <button>${company.sectors.description}</button>
+    </div>
     </li>`
     )
     .join("");
@@ -63,4 +65,16 @@ toRegisterButton.forEach((button) => {
   button.addEventListener("click", () => {
     window.location.href = "./pages/register.html";
   });
+});
+
+const menuButton = document.querySelector(".menu");
+
+const headerbutton = document.querySelector(".buttons");
+
+menuButton.addEventListener("mouseenter", () => {
+  headerbutton.classList.add("active");
+});
+
+headerbutton.addEventListener("mouseleave", () => {
+  headerbutton.classList.remove("active");
 });
