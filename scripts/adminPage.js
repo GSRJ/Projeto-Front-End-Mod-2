@@ -8,6 +8,7 @@ import { deleteDepartment } from "./requests.js";
 import { addWorkerToDepartment } from "./requests.js";
 import { deleteWorker } from "./requests.js";
 import { editWorkerInfo } from "./requests.js";
+import { deleteWorkerGeneral } from "./requests.js";
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -183,7 +184,7 @@ function renderWorkers(array, selectedCompany) {
             </div>
             <div class="worker-buttons">
                 <button id="${worker.uuid}" class="edit-worker">Editar</button>
-                <button class="delete-worker">Deletar</button>
+                <button id="${worker.uuid}"  class="delete-worker">Deletar</button>
             </div>
             </li>`
     )
@@ -201,7 +202,24 @@ function renderWorkers(array, selectedCompany) {
       modalEditWorkerContent(workerUuid);
     });
   });
+
+  const deleteWorkerButtons = document.querySelectorAll(".delete-worker");
+  console.log("deleteWorkerButtons", deleteWorkerButtons);
+
+  deleteWorkerButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const deleteWorkerModal = document.querySelector(".delete-worker-modal");
+      deleteWorkerModal.classList.add("active");
+      const workerUuid = event.target.id;
+      console.log("workerUuid", workerUuid);
+      const workerName =
+        button.parentElement.parentElement.children[0].children[0].innerText;
+      console.log("workerName", workerName);
+      modalDeleteWorkerContent(workerUuid, workerName);
+    });
+  });
 }
+
 renderWorkers(workers);
 
 // Modal create department
@@ -396,6 +414,26 @@ function modalEditWorkerContent(id) {
     const editModal = document.querySelector(".edit-modal");
     alert("Informações do funcionário editadas com sucesso!");
     editModal.classList.remove("active");
+    window.location.reload();
+  });
+}
+
+// Modal delete worker
+
+function modalDeleteWorkerContent(id, name) {
+  const deleteWorkerButton = document.getElementById(
+    "confirm-delete-worker-general"
+  );
+  const workerName = document.querySelector(".worker-name-delete-general");
+  console.log("workerName", workerName);
+  workerName.textContent = name;
+  console.log("deleteWorkerButton", deleteWorkerButton);
+  deleteWorkerButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    deleteWorkerGeneral(id);
+    const deleteWorkerModal = document.querySelector(".delete-worker-modal");
+    deleteWorkerModal.classList.remove("active");
+    alert("Funcionário desligado com sucesso!");
     window.location.reload();
   });
 }

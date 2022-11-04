@@ -194,3 +194,13 @@ export async function editWorkerInfo(workeruuid, data) {
   });
   return await response.json();
 }
+
+export async function deleteWorkerGeneral(workeruuid) {
+  const response = await fetch(`${baseUrl}admin/delete_user/${workeruuid}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return await response.json();
+}
