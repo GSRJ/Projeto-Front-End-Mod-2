@@ -90,6 +90,34 @@
       </div>
     </div>
 
+    <div class="modal-edit-worker">
+      <div class="modal-box">
+        <form id="form-edit-worker">
+          <select name="edit-worker-kind-of-work" id="edit-worker-kind-of-work">
+            <option value="" disabled selected>
+              Selecionar modalidade de trabalho
+            </option>
+            <option value="home office">Home office</option>
+            <option value="presencial">Presencial</option>
+            <option value="hibrido">Hibrido</option>
+          </select>
+          <select
+            name="edit-worker-professional-level"
+            id="edit-worker-professional-level"
+          >
+            <option value="" disabled selected>
+              Selecionar nível profissional
+            </option>
+            <option value="estágio">estágio</option>
+            <option value="júnior">Júnior</option>
+            <option value="pleno">Pleno</option>
+            <option value="sênior">Sênior</option>
+          </select>
+          <button id="save-edit-worker">Editar</button>
+        </form>
+      </div>
+    </div>
+
     <script type="module" src="../scripts/adminPage.js"></script>
   </body>
 </html>

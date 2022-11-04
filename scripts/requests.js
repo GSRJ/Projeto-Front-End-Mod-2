@@ -182,3 +182,15 @@ export async function deleteWorker(workeruuid) {
   });
   return await response.json();
 }
+
+export async function editWorkerInfo(workeruuid, data) {
+  const response = await fetch(`${baseUrl}admin/update_user/${workeruuid}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
+}

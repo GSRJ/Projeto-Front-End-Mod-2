@@ -7,6 +7,7 @@ import { editDepartment } from "./requests.js";
 import { deleteDepartment } from "./requests.js";
 import { addWorkerToDepartment } from "./requests.js";
 import { deleteWorker } from "./requests.js";
+import { editWorkerInfo } from "./requests.js";
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -171,23 +172,37 @@ function renderWorkers(array, selectedCompany) {
     selectedCompany = "";
   }
   const workersList = document.getElementById("workers-list");
+
   workersList.innerHTML = array
     .map(
       (worker) => `<li>
             <div class="worker-data">
                 <h1>${worker.username}</h1>
                 <p>${worker.professional_level}</p>
-                <p>${selectedCompany}</p>
+                <p>${worker.kind_of_work}</p>
             </div>
             <div class="worker-buttons">
-                <button class="edit-worker">Editar</button>
+                <button id="${worker.uuid}" class="edit-worker">Editar</button>
                 <button class="delete-worker">Deletar</button>
             </div>
             </li>`
     )
     .join("");
+
+  const editWorkerButtons = document.querySelectorAll(".edit-worker");
+  console.log("editWorkerButtons", editWorkerButtons);
+
+  editWorkerButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const editWorkerModal = document.querySelector(".modal-edit-worker");
+      editWorkerModal.classList.add("active");
+      const workerUuid = event.target.id;
+      console.log("workerUuid", workerUuid);
+      modalEditWorkerContent(workerUuid);
+    });
+  });
 }
-renderWorkers(workersIndepartments);
+renderWorkers(workers);
 
 // Modal create department
 
@@ -353,5 +368,34 @@ function modalViewContent(name, description, company, workers, id) {
       alert("Funcionário desligado com sucesso!");
       window.location.reload();
     });
+  });
+}
+
+// Modal edit worker
+
+function modalEditWorkerContent(id) {
+  const editWorkerButton = document.getElementById("save-edit-worker");
+  console.log("editWorkerButton", editWorkerButton);
+
+  editWorkerButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const workerKindOfWork = document.querySelector(
+      "#edit-worker-kind-of-work"
+    ).value;
+    const workerProfessionalLevel = document.querySelector(
+      "#edit-worker-professional-level"
+    ).value;
+
+    const workerData = {
+      kind_of_work: workerKindOfWork,
+      professional_level: workerProfessionalLevel,
+    };
+
+    editWorkerInfo(id, workerData);
+    const editModal = document.querySelector(".edit-modal");
+    alert("Informações do funcionário editadas com sucesso!");
+    editModal.classList.remove("active");
+    window.location.reload();
   });
 }
