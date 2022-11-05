@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,37 +10,46 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
-        <img src="" alt="Logo da Kenzie Empresas" />
-      </div>
+      <img
+        src="../assets/img/logo.svg"
+        alt="Logo da Kenzie Empresas"
+        class="logo-container"
+      />
       <div class="buttons">
-        <button class="logout">Logout</button>
+        <button class="logout white-btn">Logout</button>
       </div>
     </header>
     <main>
       <section class="user-data"></section>
-      <div class="form-box">
-        <form>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Seu nome"
-          />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Seu e-mail"
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Sua senha"
-          />
-          <button class="save">Editar perfil</button>
-        </form>
+      <div class="modal-form">
+        <div class="modal-box">
+          <form>
+            <div class="header-form">
+              <h1>Editar Perfil</h1>
+              <span class="close-icon">X</span>
+            </div>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Seu nome"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Seu e-mail"
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Sua senha"
+              required
+            />
+            <button class="save blue-btn">Editar perfil</button>
+          </form>
+        </div>
       </div>
 
       <section class="department-info"></section>

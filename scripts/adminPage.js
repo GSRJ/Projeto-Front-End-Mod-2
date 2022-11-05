@@ -1,4 +1,4 @@
-import { getDepartments } from "./requests.js";
+import { getDepartments, verifyKindOfUser } from "./requests.js";
 import { getCompanies } from "./requests.js";
 import { getWorkers } from "./requests.js";
 import { getWorkersWithoutDepartment } from "./requests.js";
@@ -9,6 +9,22 @@ import { addWorkerToDepartment } from "./requests.js";
 import { deleteWorker } from "./requests.js";
 import { editWorkerInfo } from "./requests.js";
 import { deleteWorkerGeneral } from "./requests.js";
+
+function verifyAuthentication() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "../pages/login.html";
+  }
+}
+
+verifyAuthentication();
+
+const logoutButton = document.querySelector(".logout");
+
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
 
 const companies = await getCompanies();
 console.log("companies", companies);
@@ -32,7 +48,7 @@ function renderCompanies() {
   const companiesContainer = document.querySelector("#companies-container");
   companiesContainer.insertAdjacentHTML(
     "beforeend",
-    `<option value="todas">Todas</option>`
+    `<option value="todas">Selecionar Empresa</option>`
   );
   const companiesWhitDepartments = departments.map((department) => {
     return department.companies.name;
@@ -79,14 +95,14 @@ function renderDepartments(array) {
     .map(
       (department) => `<li>
       <div class="department-data">
-        <h1>${department.name}</h1>
+        <h2>${department.name}</h2>
         <p>${department.description}</p>
         <p>${department.companies.name}</p>
       </div>
         <div class="department-buttons">
-        <button id="${department.uuid}" class="view-department">Ver</button>
-        <button id="${department.uuid}"class="edit-department">Editar</button>
-        <button id="${department.uuid}" class="delete-department">Deletar</button>
+        <button id="${department.uuid}" class="view-department"><img src="../assets/img/viewIcon.svg" alt="View Icon"></button>
+        <button id="${department.uuid}"class="edit-department"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon"></button>
+        <button id="${department.uuid}" class="delete-department"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon"></button>
         </div>
         </li>`
     )
@@ -183,8 +199,8 @@ function renderWorkers(array, selectedCompany) {
                 <p>${worker.kind_of_work}</p>
             </div>
             <div class="worker-buttons">
-                <button id="${worker.uuid}" class="edit-worker">Editar</button>
-                <button id="${worker.uuid}"  class="delete-worker">Deletar</button>
+                <button id="${worker.uuid}" class="edit-worker"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon"></button>
+                <button id="${worker.uuid}"  class="delete-worker"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon"></button>
             </div>
             </li>`
     )
@@ -226,6 +242,21 @@ renderWorkers(workers);
 
 const formCreateDepartment = document.querySelector("#form-create-department");
 console.log("formCreateDepartment", formCreateDepartment);
+
+const createModal = document.querySelector(".create-modal");
+const createDepartmentButton = document.querySelector(
+  ".create-department-button"
+);
+
+const closeIcon = document.querySelector(".close-icon");
+
+closeIcon.addEventListener("click", () => {
+  createModal.classList.remove("active");
+});
+
+createDepartmentButton.addEventListener("click", () => {
+  createModal.classList.add("active");
+});
 
 function renderCompaniesToCreateDepartment() {
   const companiesContainer = document.querySelector("#chose-company");
@@ -438,14 +469,14 @@ function modalDeleteWorkerContent(id, name) {
   });
 }
 
-const menuButton = document.querySelector(".menu");
+// const menuButton = document.querySelector(".menu");
 
-const headerbutton = document.querySelector(".buttons");
+// const headerbutton = document.querySelector(".buttons");
 
-menuButton.addEventListener("mouseenter", () => {
-  headerbutton.classList.add("active");
-});
+// menuButton.addEventListener("mouseenter", () => {
+//   headerbutton.classList.add("active");
+// });
 
-headerbutton.addEventListener("mouseleave", () => {
-  headerbutton.classList.remove("active");
-});
+// headerbutton.addEventListener("mouseleave", () => {
+//   headerbutton.classList.remove("active");
+// });

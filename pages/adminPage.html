@@ -10,39 +10,49 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
-        <img src="" alt="Logo da Kenzie Empresas" />
-      </div>
+      <img
+        src="../assets/img/logo.svg"
+        alt="Logo da Kenzie Empresas"
+        class="logo-container"
+      />
       <div class="buttons">
-        <button class="logout">Logout</button>
+        <button class="logout white-btn">Logout</button>
       </div>
     </header>
     <main>
       <div class="container-info">
-        <h2>Departamentos</h2>
+        <h1>Departamentos</h1>
         <select id="companies-container" name="companies-container"></select>
-        <button class="create-department">+ Criar</button>
+        <button class="create-department-button blue-btn">+ Criar</button>
       </div>
       <div class="create-modal">
         <div class="modal-box">
-          <h2>Criar Departamento</h2>
+          <div class="header-modal">
+            <h2>Criar Departamento</h2>
+            <span class="close-icon">X</span>
+          </div>
           <form id="form-create-department">
-            <label for="department-name">Nome do Departamento</label>
-            <input type="text" id="department-name" name="department-name" />
-            <label for="department-description"
-              >Descrição do Departamento</label
-            >
+            <input
+              type="text"
+              id="department-name"
+              name="department-name"
+              placeholder="Nome do Departamento"
+            />
             <input
               type="text"
               id="department-description"
               name="department-description"
+              placeholder="Descrição do Departamento"
             />
             <select name="chose-company" id="chose-company" required></select>
-            <button class="create-department">Criar</button>
+            <button class="create-department blue-btn">
+              Criar o departamento
+            </button>
           </form>
         </div>
       </div>
       <ul id="departments-list"></ul>
+      <h1 class="title-users">Usuários cadastrados</h1>
       <ul id="workers-list"></ul>
     </main>
     <div class="view-modal">

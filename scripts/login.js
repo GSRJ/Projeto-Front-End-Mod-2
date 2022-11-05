@@ -1,4 +1,5 @@
 import { loginUser } from "./requests.js";
+import { verifyKindOfUser } from "./requests.js";
 
 const form = document.querySelector("form");
 
@@ -11,6 +12,7 @@ form.addEventListener("submit", async (e) => {
   };
   const response = await loginUser(user);
   localStorage.setItem("token", response.token);
+  redirectUser();
 });
 
 const toRegisterButton = document.querySelectorAll(".to-register");
@@ -27,6 +29,18 @@ toHomeButton.forEach((button) => {
     window.location.href = "../index.html";
   });
 });
+
+async function redirectUser() {
+  const response = await verifyKindOfUser();
+  console.log(response);
+  if (response.is_admin === true) {
+    window.location.href = "../pages/adminPage.html";
+  } else if (response.is_admin === false) {
+    window.location.href = "../pages/userPage.html";
+  }
+}
+
+redirectUser();
 
 const menuButton = document.querySelector(".menu");
 

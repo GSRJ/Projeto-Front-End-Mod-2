@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,28 +11,37 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="" alt="Logo da Kenzie Empresas" />
+        <img
+          src="../assets/img/logo.svg"
+          alt="Logo da Kenzie Empresas"
+          class="logo-img"
+        />
+        <img src="../assets/img/headerMenu.svg" alt="menu" class="menu" />
       </div>
       <div class="buttons">
-        <button class="to-home">Home</button>
-        <button class="to-login">Login</button>
+        <button class="to-home white-btn">Home</button>
+        <button class="to-login blue-btn">Login</button>
       </div>
     </header>
-    <h1>Cadastre-se</h1>
-    <form action="register.php" method="POST">
-      <input type="text" name="username" placeholder="Seu Nome" />
-      <input type="email" name="email" placeholder="Seu e-mail" />
-      <input type="password" name="password" placeholder="Sua senha" />
-      <select name="professional-level" id="professional-level">
-        <option value="" disabled selected>Nível profissional</option>
-        <option value="estágio">estágio</option>
-        <option value="júnior">Júnior</option>
-        <option value="pleno">Pleno</option>
-        <option value="sênior">Sênior</option>
-      </select>
-      <button type="submit">Cadastre-se</button>
-    </form>
-    <button class="to-login">Retornar</button>
+    <main>
+      <div class="container">
+        <h1>Cadastre-se</h1>
+        <form action="register.php" method="POST">
+          <input type="text" name="username" placeholder="Seu Nome" />
+          <input type="email" name="email" placeholder="Seu e-mail" />
+          <input type="password" name="password" placeholder="Sua senha" />
+          <select name="professional-level" id="professional-level">
+            <option value="" disabled selected>Nível profissional</option>
+            <option value="estágio">Estágio</option>
+            <option value="júnior">Júnior</option>
+            <option value="pleno">Pleno</option>
+            <option value="sênior">Sênior</option>
+          </select>
+          <button class="blue-btn" type="submit">Cadastre-se</button>
+        </form>
+        <button class="to-login white-btn">Retornar</button>
+      </div>
+    </main>
     <script type="module" src="../scripts/register.js"></script>
   </body>
 </html>

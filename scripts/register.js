@@ -21,7 +21,7 @@ form.addEventListener("submit", async (e) => {
 
   console.log(user);
   const response = await registerUser(user);
-  console.log(response);
+  console.log(response.status);
 });
 
 const toLoginButton = document.querySelectorAll(".to-login");

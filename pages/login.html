@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,22 +11,33 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="" alt="Logo da Kenzie Empresas" />
+        <img
+          src="../assets/img/logo.svg"
+          alt="Logo da Kenzie Empresas"
+          class="logo-img"
+        />
+        <img src="../assets/img/headerMenu.svg" alt="menu" class="menu" />
       </div>
-    <div class="buttons">
-      <button class="to-register">Cadastro</button>
-      <button class="to-home">Home</button>
-    </div>
-  </header>
-    <div class="container">
-      <div class="login">
-        <h1>Login</h1>
-        <form action="login.php" method="POST">
-          <input type="email" name="email" placeholder="Seu e-mail" />
-          <input type="password" name="password" placeholder="Sua senha" />
-          <input type="submit" value="Login" />
-        </form>
+      <div class="buttons">
+        <button class="to-home white-btn">Home</button>
+        <button class="to-register blue-btn">Cadastro</button>
       </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="login">
+          <h1>Login</h1>
+          <p>Preencha os campos para realizar login</p>
+          <form action="login.php" method="POST">
+            <input type="email" name="email" placeholder="Seu e-mail" />
+            <input type="password" name="password" placeholder="Sua senha" />
+            <input class="blue-btn" type="submit" value="Login" />
+          </form>
+          <p>ou</p>
+          <button class="to-register white-btn">Cadastre-se</button>
+        </div>
+      </div>
+    </main>
     <script type="module" src="../scripts/login.js"></script>
   </body>
 </html>

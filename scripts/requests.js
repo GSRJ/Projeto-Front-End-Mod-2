@@ -15,7 +15,14 @@ export async function registerUser(user) {
     },
     body: JSON.stringify(user),
   });
-  return await response.json();
+
+  if (response.status === 201) {
+    alert("User created successfully");
+    window.location.href = "../pages/login.html";
+  } else {
+    alert("Ocorreu um erro, verifique os dados inseridos");
+  }
+  return response;
 }
 
 //Login page
@@ -26,6 +33,21 @@ export async function loginUser(user) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
+  });
+  if (response.status === 200) {
+    const data = await response.json();
+    alert("Login bem sucedido");
+    return data;
+  } else {
+    alert("Ocorreu um erro, verifique os dados inseridos");
+  }
+}
+
+export async function verifyKindOfUser() {
+  const response = await fetch(`${baseUrl}auth/validate_user`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
   });
   return await response.json();
 }
@@ -128,7 +150,12 @@ export async function createDepartment(data) {
     },
     body: JSON.stringify(data),
   });
-  return await response.json();
+  if (response.status === 201) {
+    alert("Departamento criado com sucesso");
+    window.location.reload();
+  } else {
+    alert("Ocorreu um erro, verifique os dados inseridos");
+  }
 }
 
 export async function editDepartment(postData, id) {

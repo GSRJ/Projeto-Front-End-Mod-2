@@ -22,9 +22,6 @@ header {
   width: 40%;
 }
 
-.active {
-  display: flex;
-}
 main {
   display: flex;
   flex-direction: column;
@@ -104,19 +101,23 @@ select {
   main {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
     align-items: flex-start;
+    height: 90vh;
   }
 
   .home-image {
     display: flex;
-    width: 45%;
+    width: 50%;
+    height: 90%;
   }
   main > div {
     display: flex;
     flex-direction: column;
     width: 45%;
+    height: 100%;
   }
   select {
     width: 100%;
@@ -127,7 +128,7 @@ select {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-height: 100vh;
+    height: 85%;
     box-sizing: border-box;
   }
   #companies-list > li {
@@ -137,4 +138,8 @@ select {
     border-bottom: 0.125rem solid var(--main-color);
     gap: 1rem;
   }
+}
+
+.active {
+  display: flex;
 }

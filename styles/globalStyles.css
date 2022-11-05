@@ -1,15 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-:root {
-  --main-color: #4200ff;
-  --white-color: #ffffff;
-  --black-color: #000000;
-  --black-color-opacity: rgba(0, 0, 0, 0.3);
-  --red-color: #ce4646;
-  --green-color: #4ba036;
-  --main-font: "Inter", sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +5,20 @@
   font-family: var(--main-font);
   text-decoration: none;
   letter-spacing: 0%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --main-color: #4200ff;
+  --white-color: #ffffff;
+  --white-color-opacity: #ffffffe6;
+  --gray-color: #f8f8f8;
+  --black-color: #000000;
+  --black-color-opacity: rgba(0, 0, 0, 0.5);
+  --red-color: #030303;
+  --green-color: #4ba036;
+  --main-font: "Inter", sans-serif;
 }
 
 /*Buttons*/

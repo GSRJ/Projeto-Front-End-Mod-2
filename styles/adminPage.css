@@ -1,0 +1,170 @@
+body {
+  background-color: var(--white-color);
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 10%;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.logo-container > img {
+  width: 100%;
+}
+
+.buttons > button {
+  width: 100%;
+}
+.container-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+#companies-container {
+  padding: 0.5rem;
+  border-radius: 5rem;
+}
+
+.create-department {
+  width: 15%;
+}
+
+.create-modal {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.modal-box > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+}
+
+.modal-box > form > select {
+  border: 0.125rem solid var(--black-color-opacity);
+  color: var(--black-color-opacity);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-box > form > button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.header-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+/**/
+
+#departments-list,
+#workers-list {
+  padding: 2rem;
+  background-color: var(--gray-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+  gap: 1rem;
+  overflow: auto;
+  border: 1px solid var(--gray-color);
+}
+
+#departments-list > li,
+#workers-list > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35%;
+  padding: 1rem;
+  background-color: var(--white-color);
+  gap: 1rem;
+  border-bottom: 1px solid var(--main-color);
+}
+.department-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.department-buttons,
+.worker-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+.view-department,
+.edit-department,
+.delete-department,
+.edit-worker,
+.delete-worker {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.title-users {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.active {
+  display: flex;
+}

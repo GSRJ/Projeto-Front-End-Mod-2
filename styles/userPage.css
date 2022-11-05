@@ -1,0 +1,139 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 10%;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.logo-container > img {
+  width: 100%;
+}
+
+.buttons > button {
+  width: 100%;
+}
+
+.user-data {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.all-informations {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.edit-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal-form {
+  position: fixed;
+  background-color: var(--black-color-opacity);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal-box {
+  background-color: var(--white-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal-box > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.modal-box > form > h1 {
+  font-weight: 900;
+}
+
+.header-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.active {
+  display: flex;
+}
+
+.department-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.your-company {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding: 2rem;
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+.coworkers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: left;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding: 2rem;
+  background-color: var(--gray-color);
+}
+
+.coworker {
+  border: 2px solid var(--main-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  gap: 1rem;
+  min-width: 30%;
+  background-color: var(--white-color);
+}
