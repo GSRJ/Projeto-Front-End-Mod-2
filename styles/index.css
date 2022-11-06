@@ -107,6 +107,11 @@ select {
     align-items: flex-start;
     height: 90vh;
   }
+  .logo-img {
+    width: 20rem;
+    position: relative;
+    top: 75%;
+  }
 
   .home-image {
     display: flex;

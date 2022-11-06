@@ -56,52 +56,67 @@
       <ul id="workers-list"></ul>
     </main>
     <div class="view-modal">
-      <div class="modal-box">
-        <h1 class="view-department-name"></h1>
-        <div>
+      <div class="view-modal-box">
+        <div class="header-modal">
+          <h1 class="view-department-name"></h1>
+          <span class="close-icon-view">X</span>
+        </div>
+        <div class="view-modal-data">
           <h2 class="view-department-description"></h2>
           <select
             name="workes-without-department-container"
             id="workes-without-department-container"
           ></select>
         </div>
-        <div>
-          <p class="view-department-company"></p>
-          <button id="add-worker-to-department">Contratar</button>
+        <p class="view-department-company"></p>
+        <div class="add-worker-to-department-bttn-box">
+          <button class="green-btn" id="add-worker-to-department">
+            Contratar
+          </button>
         </div>
         <div>
-          <h2>Funcionários</h2>
           <ul class="view-department-workers"></ul>
         </div>
       </div>
     </div>
     <div class="edit-modal">
-      <div class="modal-box">
-        <h2>Editar Departamento</h2>
-        <form id="form-edit-department">
-          <input
-            type="text"
-            id="edit-department-description"
-            name="edit-department-description"
-          />
-          <button id="save-edit-department">Salvar alterações</button>
-        </form>
+      <div class="edit-modal-box">
+        <div class="header-modal">
+          <h2>Editar Departamento</h2>
+          <span class="close-icon-edit">X</span>
+        </div>
+          <form id="form-edit-department">
+            <textarea
+              type="text"
+              id="edit-department-description"
+              name="edit-department-description"
+            ></textarea>
+            <button class="blue-btn" id="save-edit-department">Salvar alterações</button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="delete-department-modal">
-      <div class="modal-box">
-        <h2>Excluir Departamento</h2>
-        <p>
-          Realmente deseja deletar o Departamento
-          <span class="department-name-delete"></span> e demitir seus
+      <div class="modal-box-delete-department">
+        <div class="header-modal">
+          <h2></h2>
+          <span class="close-icon-delete-department">X</span>
+        </div>
+        <h3>
+          Realmente deseja deletar o Departamento </h3>
+          <h2 class="department-name-delete"></h2> <h3>e demitir seus
           funcionários?
-        </p>
-        <button id="confirm-delete-department">Confirmar</button>
+        </h3>
+        <button class="green-btn" id="confirm-delete-department">Confirmar</button>
       </div>
     </div>
 
     <div class="modal-edit-worker">
       <div class="modal-box">
+        <div class="header-modal">
+          <h2>Editar Funcionário</h2>
+          <span class="close-icon-edit-worker">X</span>
+        </div>
         <form id="form-edit-worker">
           <select name="edit-worker-kind-of-work" id="edit-worker-kind-of-work">
             <option value="" disabled selected>
@@ -129,16 +144,22 @@
     </div>
 
     <div class="delete-worker-modal">
-      <div class="modal-box">
-        <p>
-          Realmente deseja remover o usuário
-          <span class="worker-name-delete-general"></span>
-          ?
-        </p>
-        <button id="confirm-delete-worker-general">Deletar</button>
+      <div class="modal-box-delete-worker">
+        <div class="header-modal">
+          <h2></h2>
+          <span class="close-icon-delete-worker">X</span>
+        </div>
+        <div>
+        <h3>
+          Realmente deseja remover o  </h3>
+          <h2 class="worker-name-delete-general"></h2>
+          <h3>?</h3>
+
+        </div>  
+        <button class="green-btn" id="confirm-delete-worker-general">Deletar</button>
       </div>
     </div>
-
+    </div>
     <script type="module" src="../scripts/adminPage.js"></script>
   </body>
 </html>

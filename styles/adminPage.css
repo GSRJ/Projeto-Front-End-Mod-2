@@ -41,8 +41,13 @@ header {
   width: 15%;
 }
 
-.create-modal {
-  display: none;
+.create-modal,
+.view-modal,
+.edit-modal,
+.delete-department-modal,
+.modal-edit-worker,
+.delete-worker-modal {
+  display: none; /**/
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -100,7 +105,12 @@ header {
   align-items: center;
   width: 100%;
 }
-.close-icon {
+.close-icon,
+.close-icon-view,
+.close-icon-edit,
+.close-icon-delete-department,
+.close-icon-edit-worker,
+.close-icon-delete-worker {
   width: 1.5rem;
   height: 1.5rem;
   cursor: pointer;
@@ -118,7 +128,7 @@ header {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   gap: 1rem;
   overflow: auto;
   border: 1px solid var(--gray-color);
@@ -148,13 +158,13 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .view-department,
 .edit-department,
 .delete-department,
 .edit-worker,
-.delete-worker {
+.delete-worker-general {
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -162,7 +172,161 @@ header {
 
 .title-users {
   text-align: center;
-  margin: 3rem 0;
+  margin: 2rem 0;
+}
+
+.view-modal-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 1rem;
+  width: 50%;
+}
+
+.view-modal-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#workes-without-department-container {
+  border: 0.125rem solid var(--black-color-opacity);
+  color: var(--black-color-opacity);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 50%;
+}
+
+.add-worker-to-department-bttn-box {
+  display: flex;
+  justify-content: end;
+}
+
+.view-department-workers {
+  padding: 2rem;
+  background-color: var(--gray-color);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+  overflow: auto;
+  border: 1px solid var(--gray-color);
+}
+
+.view-department-workers > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: fit-content;
+  background-color: var(--white-color);
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 2px solid var(--main-color);
+}
+.worker-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 16px;
+}
+.delete-worker {
+  border: 1px solid var(--red-color);
+}
+
+.edit-modal-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 1rem;
+  width: 30;
+}
+
+#form-edit-department {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#form-edit-department > textarea {
+  border: 0.125rem solid var(--black-color-opacity);
+  color: var(--black-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+#form-edit-department > button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+#edit-department-description {
+  width: 100%;
+  height: 100px;
+}
+
+.modal-box-delete-department {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 1rem;
+  width: 40%;
+}
+
+.modal-box-delete-department > button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-box-delete-worker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 1rem;
+  width: 40%;
+}
+
+.modal-box-delete-worker > h3 {
+  display: inline;
+}
+.modal-box-delete-worker > h2 {
+  display: inline;
+}
+
+.modal-box-delete-worker > button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
 }
 
 .active {

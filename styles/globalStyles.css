@@ -14,9 +14,9 @@
   --white-color: #ffffff;
   --white-color-opacity: #ffffffe6;
   --gray-color: #f8f8f8;
-  --black-color: #000000;
+  --red-color: #ce4646;
   --black-color-opacity: rgba(0, 0, 0, 0.5);
-  --red-color: #030303;
+  --black-color: #030303;
   --green-color: #4ba036;
   --main-font: "Inter", sans-serif;
 }

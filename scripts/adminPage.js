@@ -100,9 +100,9 @@ function renderDepartments(array) {
         <p>${department.companies.name}</p>
       </div>
         <div class="department-buttons">
-        <button id="${department.uuid}" class="view-department"><img src="../assets/img/viewIcon.svg" alt="View Icon"></button>
-        <button id="${department.uuid}"class="edit-department"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon"></button>
-        <button id="${department.uuid}" class="delete-department"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon"></button>
+        <button id="${department.uuid}" class="view-department"><img src="../assets/img/viewIcon.svg" alt="View Icon" id="${department.uuid}"></button>
+        <button id="${department.uuid}"class="edit-department"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon" id="${department.uuid}"></button>
+        <button id="${department.uuid}" class="delete-department"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon" id="${department.uuid}"></button>
         </div>
         </li>`
     )
@@ -144,6 +144,16 @@ function renderDepartments(array) {
     });
   });
 
+  const closeDeleteDepartmentModal = document.querySelector(
+    ".close-icon-delete-department"
+  );
+  closeDeleteDepartmentModal.addEventListener("click", () => {
+    const deleteDepartmentModal = document.querySelector(
+      ".delete-department-modal"
+    );
+    deleteDepartmentModal.classList.remove("active");
+  });
+
   const viewDepartmentButtons = document.querySelectorAll(".view-department");
   console.log("viewDepartmentButtons", viewDepartmentButtons);
 
@@ -179,6 +189,13 @@ function renderDepartments(array) {
 }
 renderDepartments(departments);
 
+const closeIconView = document.querySelector(".close-icon-view");
+
+closeIconView.addEventListener("click", () => {
+  const viewDepartmentModal = document.querySelector(".view-modal");
+  viewDepartmentModal.classList.remove("active");
+});
+
 const companiesWithDepartments = departments.map((department) => {
   return department.companies.name;
 });
@@ -199,8 +216,8 @@ function renderWorkers(array, selectedCompany) {
                 <p>${worker.kind_of_work}</p>
             </div>
             <div class="worker-buttons">
-                <button id="${worker.uuid}" class="edit-worker"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon"></button>
-                <button id="${worker.uuid}"  class="delete-worker"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon"></button>
+                <button id="${worker.uuid}" class="edit-worker"><img src="../assets/img/editIconBlack.svg" alt="Edit Icon" id="${worker.uuid}"></button>
+                <button id="${worker.uuid}"  class="delete-worker-general"><img src="../assets/img/deleteIcon.svg" alt="Delete Icon" id="${worker.uuid}"></button>
             </div>
             </li>`
     )
@@ -219,7 +236,9 @@ function renderWorkers(array, selectedCompany) {
     });
   });
 
-  const deleteWorkerButtons = document.querySelectorAll(".delete-worker");
+  const deleteWorkerButtons = document.querySelectorAll(
+    ".delete-worker-general"
+  );
   console.log("deleteWorkerButtons", deleteWorkerButtons);
 
   deleteWorkerButtons.forEach((button) => {
@@ -371,6 +390,11 @@ function modalViewContent(name, description, company, workers, id) {
     )
     .join("");
 
+  workersWithoutDepartmentContainer.insertAdjacentHTML(
+    "afterbegin",
+    `<option value="0" disabled Selected> Selecionar usuário</option>`
+  );
+
   const addWorkerToDepartmentButton = document.querySelector(
     "#add-worker-to-department"
   );
@@ -391,31 +415,35 @@ function modalViewContent(name, description, company, workers, id) {
 
   companyName.textContent = company;
   const workersList = document.querySelector(".view-department-workers");
+
   console.log("workersList", workersList);
   workers.forEach((worker) => {
     workersList.insertAdjacentHTML(
       "beforeend",
       `<li>
             <div class="worker-data">
-                <h1>${worker.username}</h1>
+                <h3>${worker.username}</h3>
                 <p>${worker.professional_level}</p> 
                 <p>${company}</p>
             </div>
             <div class="worker-buttons">
-                <button class="delete-worker" id="${worker.uuid}">Desligar</button>
+                <button class="delete-worker red-btn" id="${worker.uuid}">Desligar</button>
             </div>
             </li>`
     );
 
-    const deleteWorkerButton = document.getElementById(worker.uuid);
-    console.log("deleteWorkerButton", deleteWorkerButton);
-    deleteWorkerButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      console.log("worker.uuid", worker.uuid);
-      const workerUuid = worker.uuid;
-      deleteWorker(workerUuid);
-      alert("Funcionário desligado com sucesso!");
-      window.location.reload();
+    const removeWorkerButton = document.querySelectorAll(".delete-worker");
+    console.log("removeWorkerButton", removeWorkerButton);
+
+    removeWorkerButton.forEach((button) => {
+      button.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const workerUuid = button.id;
+        console.log("workerUuid", workerUuid);
+        deleteWorker(workerUuid);
+        alert("Funcionário removido com sucesso!");
+        window.location.reload();
+      });
     });
   });
 }
@@ -441,13 +469,28 @@ function modalEditWorkerContent(id) {
       professional_level: workerProfessionalLevel,
     };
 
+    console.log("id", id);
+    console.log("workerData", workerData);
     editWorkerInfo(id, workerData);
-    const editModal = document.querySelector(".edit-modal");
     alert("Informações do funcionário editadas com sucesso!");
-    editModal.classList.remove("active");
     window.location.reload();
   });
 }
+
+const closeIconEditWorker = document.querySelector(".close-icon-edit-worker");
+closeIconEditWorker.addEventListener("click", (event) => {
+  event.preventDefault();
+  const editWorkerModal = document.querySelector(".modal-edit-worker");
+  editWorkerModal.classList.remove("active");
+});
+
+const closeEditModal = document.querySelector(".close-icon-edit");
+
+closeEditModal.addEventListener("click", (event) => {
+  event.preventDefault();
+  const editModal = document.querySelector(".edit-modal");
+  editModal.classList.remove("active");
+});
 
 // Modal delete worker
 
@@ -469,14 +512,12 @@ function modalDeleteWorkerContent(id, name) {
   });
 }
 
-// const menuButton = document.querySelector(".menu");
+const closeIconDeleteWorker = document.querySelector(
+  ".close-icon-delete-worker"
+);
 
-// const headerbutton = document.querySelector(".buttons");
-
-// menuButton.addEventListener("mouseenter", () => {
-//   headerbutton.classList.add("active");
-// });
-
-// headerbutton.addEventListener("mouseleave", () => {
-//   headerbutton.classList.remove("active");
-// });
+closeIconDeleteWorker.addEventListener("click", (event) => {
+  event.preventDefault();
+  const deleteWorkerModal = document.querySelector(".delete-worker-modal");
+  deleteWorkerModal.classList.remove("active");
+});

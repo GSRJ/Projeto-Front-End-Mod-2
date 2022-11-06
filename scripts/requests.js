@@ -229,5 +229,6 @@ export async function deleteWorkerGeneral(workeruuid) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
+  console.log(response);
   return await response.json();
 }
