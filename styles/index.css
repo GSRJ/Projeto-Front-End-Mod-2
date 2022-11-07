@@ -1,0 +1,150 @@
+header {
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  padding: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.buttons {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttons > button {
+  width: 40%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  align-items: center;
+}
+.home-image {
+  display: none;
+}
+select {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  width: 95vw;
+  height: 3rem;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 400;
+}
+
+#companies-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#companies-list > li {
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  min-width: 15rem;
+  height: 13rem;
+  padding: 1rem;
+  border-bottom: 0.125rem solid var(--main-color);
+  margin: 1rem;
+}
+
+#companies-list > li > h1 {
+  font-size: 1.2rem;
+}
+
+#companies-list > li > div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1rem;
+}
+
+#companies-list > li > div > button {
+  background-color: var(--white-color);
+  border: 1px solid #4200ff;
+  border-radius: 255px;
+  width: fit-content;
+  padding: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .menu {
+    display: none;
+  }
+  .buttons {
+    display: flex;
+    justify-content: right;
+  }
+  .buttons > button {
+    width: 20%;
+    transform: translatey(-70%);
+  }
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    align-items: flex-start;
+    height: 90vh;
+  }
+  .logo-img {
+    width: 20rem;
+    position: relative;
+    top: 75%;
+  }
+
+  .home-image {
+    display: flex;
+    width: 50%;
+    height: 90%;
+  }
+  main > div {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+  }
+  select {
+    width: 100%;
+  }
+
+  #companies-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+    box-sizing: border-box;
+  }
+  #companies-list > li {
+    min-width: 90%;
+    height: 9rem;
+    padding: 1rem;
+    border-bottom: 0.125rem solid var(--main-color);
+    gap: 1rem;
+  }
+}
+
+.active {
+  display: flex;
+}

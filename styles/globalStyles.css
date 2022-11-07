@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  text-decoration: none;
+  letter-spacing: 0%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --main-color: #4200ff;
+  --white-color: #ffffff;
+  --white-color-opacity: #ffffffe6;
+  --gray-color: #f8f8f8;
+  --red-color: #ce4646;
+  --black-color-opacity: rgba(0, 0, 0, 0.5);
+  --black-color: #030303;
+  --green-color: #4ba036;
+  --main-font: "Inter", sans-serif;
+}
+
+/*Buttons*/
+
+.white-btn {
+  background-color: var(--white-color);
+  color: var(--main-color);
+  height: 3rem;
+  border: 0.125rem solid var(--main-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.white-btn:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.blue-btn {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  height: 3rem;
+  border: 0.125rem solid var(--main-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.blue-btn:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: var(--white-color);
+  color: var(--main-color);
+}
+
+.green-btn {
+  background-color: var(--green-color);
+  color: var(--white-color);
+  height: 3rem;
+  border: 0.125rem solid var(--green-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.green-btn:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: var(--white-color);
+  color: var(--green-color);
+}
+
+.red-btn {
+  background-color: var(--white-color);
+  color: var(--red-color);
+  height: 3rem;
+  border: 0.125rem solid var(--red-color);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.red-btn:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+input {
+  border: 0.125rem solid var(--black-color-opacity);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+::placeholder {
+  color: var(--black-color-opacity);
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  background-color: #f8f8f8;
+}
+
+.toast-box-success {
+  position: absolute;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  display: none;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: var(--white-color);
+  background-color: var(--green-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.toast-box-error {
+  position: absolute;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  display: none;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: var(--white-color);
+  background-color: var(--red-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+@keyframes toast {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.active {
+  animation: toast 0.5s ease-in-out;
+  display: block;
+}

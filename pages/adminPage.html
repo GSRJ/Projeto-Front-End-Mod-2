@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/globalStyles.css" />
+    <link rel="stylesheet" href="../styles/adminPage.css" />
+    <title>HomePage - Kenzie Empresas</title>
+  </head>
+  <body>
+    <header>
+      <img
+        src="../assets/img/logo.svg"
+        alt="Logo da Kenzie Empresas"
+        class="logo-container"
+      />
+      <div class="buttons">
+        <button class="logout white-btn">Logout</button>
+      </div>
+    </header>
+    <main>
+      <div class="container-info">
+        <h1>Departamentos</h1>
+        <select id="companies-container" name="companies-container"></select>
+        <button class="create-department-button blue-btn">+ Criar</button>
+      </div>
+      <div class="create-modal">
+        <div class="modal-box">
+          <div class="header-modal">
+            <h2>Criar Departamento</h2>
+            <span class="close-icon">X</span>
+          </div>
+          <form id="form-create-department">
+            <input
+              type="text"
+              id="department-name"
+              name="department-name"
+              placeholder="Nome do Departamento"
+            />
+            <input
+              type="text"
+              id="department-description"
+              name="department-description"
+              placeholder="Descrição do Departamento"
+            />
+            <select name="chose-company" id="chose-company" required></select>
+            <button class="create-department blue-btn">
+              Criar o departamento
+            </button>
+          </form>
+        </div>
+      </div>
+      <ul id="departments-list"></ul>
+      <h1 class="title-users">Usuários cadastrados</h1>
+      <ul id="workers-list"></ul>
+    </main>
+    <div class="view-modal">
+      <div class="view-modal-box">
+        <div class="header-modal">
+          <h1 class="view-department-name"></h1>
+          <span class="close-icon-view">X</span>
+        </div>
+        <div class="view-modal-data">
+          <h2 class="view-department-description"></h2>
+          <select
+            name="workes-without-department-container"
+            id="workes-without-department-container"
+          ></select>
+        </div>
+        <p class="view-department-company"></p>
+        <div class="add-worker-to-department-bttn-box">
+          <button class="green-btn" id="add-worker-to-department">
+            Contratar
+          </button>
+        </div>
+        <div>
+          <ul class="view-department-workers"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="edit-modal">
+      <div class="edit-modal-box">
+        <div class="header-modal">
+          <h2>Editar Departamento</h2>
+          <span class="close-icon-edit">X</span>
+        </div>
+          <form id="form-edit-department">
+            <textarea
+              type="text"
+              id="edit-department-description"
+              name="edit-department-description"
+            ></textarea>
+            <button class="blue-btn" id="save-edit-department">Salvar alterações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="delete-department-modal">
+      <div class="modal-box-delete-department">
+        <div class="header-modal">
+          <h2></h2>
+          <span class="close-icon-delete-department">X</span>
+        </div>
+        <h3>
+          Realmente deseja deletar o Departamento </h3>
+          <h2 class="department-name-delete"></h2> <h3>e demitir seus
+          funcionários?
+        </h3>
+        <button class="green-btn" id="confirm-delete-department">Confirmar</button>
+      </div>
+    </div>
+
+    <div class="modal-edit-worker">
+      <div class="modal-box">
+        <div class="header-modal">
+          <h2>Editar Funcionário</h2>
+          <span class="close-icon-edit-worker">X</span>
+        </div>
+        <form id="form-edit-worker">
+          <select name="edit-worker-kind-of-work" id="edit-worker-kind-of-work">
+            <option value="" disabled selected>
+              Selecionar modalidade de trabalho
+            </option>
+            <option value="home office">Home office</option>
+            <option value="presencial">Presencial</option>
+            <option value="hibrido">Hibrido</option>
+          </select>
+          <select
+            name="edit-worker-professional-level"
+            id="edit-worker-professional-level"
+          >
+            <option value="" disabled selected>
+              Selecionar nível profissional
+            </option>
+            <option value="estágio">estágio</option>
+            <option value="júnior">Júnior</option>
+            <option value="pleno">Pleno</option>
+            <option value="sênior">Sênior</option>
+          </select>
+          <button id="save-edit-worker">Editar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="delete-worker-modal">
+      <div class="modal-box-delete-worker">
+        <div class="header-modal">
+          <h2></h2>
+          <span class="close-icon-delete-worker">X</span>
+        </div>
+        <div>
+        <h3>
+          Realmente deseja remover o  </h3>
+          <h2 class="worker-name-delete-general"></h2>
+          <h3>?</h3>
+
+        </div>  
+        <button class="green-btn" id="confirm-delete-worker-general">Deletar</button>
+      </div>
+    </div>
+    </div>
+    <script type="module" src="../scripts/adminPage.js"></script>
+  </body>
+</html>

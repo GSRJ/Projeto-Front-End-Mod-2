@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/globalStyles.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>HomePage - Kenzie Empresas</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="./assets/img/logo.svg" alt="Logo da Kenzie Empresas" class="logo-img" />
+        <img src="./assets/img/headerMenu.svg" alt="menu" class="menu" />
+      </div>
+      <div class="buttons">
+        <button class="to-login white-btn">Login</button>
+        <button class="to-register blue-btn">Cadastro</button>
+      </div>
+    </header>
+    <main>
+      <img
+        class="home-image"
+        src="./assets/img/homeImage.svg"
+        alt="imagem principal"
+      />
+      <div>
+      <select id="sectors-list" name="sectors-list"></select>
+      <ul id="companies-list"></ul>
+      </main>
+    </main>
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
+</html>
