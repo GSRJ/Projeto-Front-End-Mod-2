@@ -82,7 +82,7 @@ selectedCompany.addEventListener("change", (event) => {
   console.log("filteredWorkers", filteredWorkers);
   if (selectedCompany === "todas") {
     renderDepartments(departments);
-    renderWorkers(workersIndepartments);
+    renderWorkers(workers);
   } else {
     renderDepartments(filteredDepartments);
     renderWorkers(filteredWorkers, selectedCompany);
@@ -341,6 +341,7 @@ function modalEditContent(id, description) {
     editDepartment(departmentData, id);
     const editModal = document.querySelector(".edit-modal");
     editModal.classList.remove("active");
+    alert("Departamento editado com sucesso!");
     window.location.reload();
   });
 }
@@ -362,6 +363,7 @@ function modalDeleteContent(id, name) {
       ".delete-department-modal"
     );
     deleteDepartmentModal.classList.remove("active");
+    alert("Departamento deletado com sucesso!");
     window.location.reload();
   });
 }
