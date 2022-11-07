@@ -170,11 +170,12 @@ export async function createDepartment(data) {
     },
     body: JSON.stringify(data),
   });
+  const responseJson = await response.json();
   if (response.status === 201) {
     alert("Departamento criado com sucesso");
     window.location.reload();
   } else {
-    alert("Ocorreu um erro, verifique os dados inseridos");
+    alert(responseJson.error);
   }
 }
 

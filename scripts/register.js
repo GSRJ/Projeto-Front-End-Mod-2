@@ -6,7 +6,6 @@ const selectLevel = document.querySelector("select");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  console.log(formData);
   if (selectLevel.value === "") {
     selectLevel.value = null;
   }
@@ -19,9 +18,7 @@ form.addEventListener("submit", async (e) => {
     user.professional_level = selectLevel.value;
   }
 
-  console.log(user);
   const response = await registerUser(user);
-  console.log(response.status);
 });
 
 const toLoginButton = document.querySelectorAll(".to-login");

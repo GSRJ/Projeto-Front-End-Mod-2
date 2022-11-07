@@ -42,7 +42,6 @@ renderCompanies(companies);
 const selectedSector = document.querySelector("select");
 selectedSector.addEventListener("change", (event) => {
   const selectedSector = event.target.value;
-  console.log(selectedSector);
   const filteredCompanies = companies.filter(
     (company) => company.sectors.description === selectedSector
   );
