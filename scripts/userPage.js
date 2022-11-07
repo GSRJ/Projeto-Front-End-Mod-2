@@ -73,7 +73,6 @@ const coworkers = document.querySelector(".coworkers");
 
 async function renderCoworkers() {
   const data = await getCoworkers();
-  console.log(data);
 
   data[0].users.forEach((coworker) => {
     coworkers.innerHTML += `

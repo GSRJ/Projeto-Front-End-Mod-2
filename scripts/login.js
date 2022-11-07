@@ -13,7 +13,6 @@ form.addEventListener("submit", async (e) => {
   const response = await loginUser(user);
   localStorage.setItem("token", response.token);
   const toastBoxSucces = document.querySelector(".toast-box-success");
-  console.log(toastBoxSucces);
   const toastText = document.querySelector(".toast-text");
   toastText.innerText = "Login efetuado com sucesso!";
   toastBoxSucces.classList.add("active");
@@ -37,7 +36,6 @@ toHomeButton.forEach((button) => {
 
 async function redirectUser() {
   const response = await verifyKindOfUser();
-  console.log(response);
 
   if (response.is_admin === true) {
     setTimeout(() => {
