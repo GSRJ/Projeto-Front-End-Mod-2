@@ -12,6 +12,11 @@ form.addEventListener("submit", async (e) => {
   };
   const response = await loginUser(user);
   localStorage.setItem("token", response.token);
+  const toastBoxSucces = document.querySelector(".toast-box-success");
+  console.log(toastBoxSucces);
+  const toastText = document.querySelector(".toast-text");
+  toastText.innerText = "Login efetuado com sucesso!";
+  toastBoxSucces.classList.add("active");
   redirectUser();
 });
 
@@ -33,10 +38,15 @@ toHomeButton.forEach((button) => {
 async function redirectUser() {
   const response = await verifyKindOfUser();
   console.log(response);
+
   if (response.is_admin === true) {
-    window.location.href = "../pages/adminPage.html";
+    setTimeout(() => {
+      window.location.href = "../pages/adminPage.html";
+    }, 1500);
   } else if (response.is_admin === false) {
-    window.location.href = "../pages/userPage.html";
+    setTimeout(() => {
+      window.location.href = "../pages/userPage.html";
+    }, 1500);
   }
 }
 

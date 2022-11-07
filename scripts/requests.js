@@ -16,13 +16,25 @@ export async function registerUser(user) {
     body: JSON.stringify(user),
   });
 
-  if (response.status === 201) {
-    alert("User created successfully");
-    window.location.href = "../pages/login.html";
+  const responseJson = await response.json();
+  console.log(responseJson.error);
+  if (responseJson.error) {
+    const toastBoxError = document.querySelector(".toast-box-error");
+    const toastTextError = document.querySelector(".toast-text-error");
+    toastTextError.innerText = responseJson.error;
+    toastBoxError.classList.add("active");
+    setTimeout(() => {
+      toastBoxError.classList.remove("active");
+    }, 3000);
   } else {
-    alert("Ocorreu um erro, verifique os dados inseridos");
+    const toastBoxSucces = document.querySelector(".toast-box-success");
+    const toastText = document.querySelector(".toast-text");
+    toastText.innerText = "Cadastro efetuado com sucesso!";
+    toastBoxSucces.classList.add("active");
+    setTimeout(() => {
+      window.location.href = "../pages/login.html";
+    }, 1500);
   }
-  return response;
 }
 
 //Login page
@@ -34,12 +46,20 @@ export async function loginUser(user) {
     },
     body: JSON.stringify(user),
   });
+
+  const data = await response.json();
+
   if (response.status === 200) {
-    const data = await response.json();
-    alert("Login bem sucedido");
     return data;
   } else {
-    alert("Ocorreu um erro, verifique os dados inseridos");
+    const toastBoxError = document.querySelector(".toast-box-error");
+    const toastTextError = document.querySelector(".toast-text-error");
+    toastTextError.innerHTML = data.error;
+    toastBoxError.classList.add("active");
+
+    setTimeout(() => {
+      toastBoxError.classList.remove("active");
+    }, 1500);
   }
 }
 
