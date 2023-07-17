@@ -1,7 +1,5 @@
-Bom Projeto!! 
-
-Doc: https://kenzie-academy-brasil-developers.github.io/m2-empresas-doc
-
-Fgima: https://www.figma.com/file/EEEdGd0gL5iLzaspW8DPXE/Kenzie-Empresas-Oficial
-
+Para acessar as funcionaldades desta aplicação será necessário rodar a seguinte api localmente: 
 APi Local: https://github.com/Jardel-Kenzie/m2-api-empresas
+
+Documentação: https://kenzie-academy-brasil-developers.github.io/m2-empresas-doc
+
